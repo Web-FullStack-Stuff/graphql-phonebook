@@ -12,7 +12,8 @@ const PhoneForm = ({ setError }) => {
   const submit = (event) => {
     event.preventDefault()
 
-    changeNumber({ variables: { name, phone } })
+    changeNumber({ variables: { 
+      name, phone } })
 
     setName('')
     setPhone('')
