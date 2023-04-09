@@ -31,15 +31,6 @@ const resolvers = {
         street: root.street,
         city: root.city,
       }
-    },
-    friendOf: async (root) => {
-      // return users
-      const friends = await User.find({
-        friends: {
-          $in: [root._id]
-        }
-      })
-      return friends
     }
   },
 
@@ -57,6 +48,7 @@ const resolvers = {
       }
 
       try {
+        person.friendOf = person.friendOf.concat(currentUser)
         await person.save()
         currentUser.friends = currentUser.friends.concat(person)
         await currentUser.save()
